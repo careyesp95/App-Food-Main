@@ -18,11 +18,18 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const { conn, Diet } = require('./src/db.js');
+
+
+// En una primera instancia, cuando no exista ninguno, deberán precargar la base de datos con los tipos de datos indicados por spoonacular acá
+let dietas = ['Gluten Free','Dairy Free','Ketogenic','Vegetarian','Lacto-Vegetarian','Ovo-Vegetarian','Vegan','Pescetarian','Paleo','Primal','Low FODMAP','Whole30']
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
+    dietas.forEach(async (elem) => {
+      await Diet.findOrCreate({where:{name:elem}})
+    })
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
