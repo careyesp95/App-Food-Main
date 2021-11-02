@@ -1,13 +1,17 @@
 import {
     GET_RECIPE_ALL,
+    GET_DIETS_ALL,
     GET_RECIPE_NAME,
     FILTER_BY_ORDER,
     FILTER_BY_CREATE,
+    FILTER_BY_SCORE,
+    FILTER_BY_DIETS,
 } from '../actions/actionName';
 
 const initialState = {
     allRecipes :[],
     allRecipesAux:[],
+    allDiets:undefined,
 }
 
 function reducer(state=initialState,action) {
@@ -19,12 +23,27 @@ function reducer(state=initialState,action) {
                 allRecipesAux:action.payload,
                 
             };
-        case GET_RECIPE_NAME:
+
+        case GET_DIETS_ALL:
             return {
                 ...state,
-                allRecipes:action.payload,
+                allDiets:action.payload,
+            };
+
+        case GET_RECIPE_NAME:
+            let valuedata;
+            if(action.payload.hasOwnProperty('message')){
+                alert(`${action.payload.message}`)
+                valuedata = state.allRecipesAux
+            }else {
+                valuedata = action.payload
+            }
+            return {
+                ...state,
+                allRecipes:valuedata,
             };
         case FILTER_BY_ORDER:
+
             let sortedOrder = action.payload === 'asc' ?
             state.allRecipes.sort(function(a,b){
                 if(a.name > b.name){
@@ -48,6 +67,7 @@ function reducer(state=initialState,action) {
                 ...state,
                 allRecipes:sortedOrder,
             };
+
         case FILTER_BY_CREATE:
             let dataRender;
             if(action.payload === 'creado'){
@@ -60,7 +80,45 @@ function reducer(state=initialState,action) {
             return {
                 ...state,
                 allRecipes:dataRender
-            }
+            };
+            case FILTER_BY_SCORE:
+                let sortedScore;
+                if(action.payload === 'mayor'){
+                    sortedScore = state.allRecipesAux.sort((a,b) =>{
+                        if(a.spoonacularScore > b.spoonacularScore) return -1;
+                        if(a.spoonacularScore < b.spoonacularScore) return 1;
+                        return 0;
+                    })
+                }else if(action.payload === 'menor') {
+                    
+                    sortedScore = state.allRecipesAux.sort((a,b) =>{
+                        if(a.spoonacularScore > b.spoonacularScore) return 1;
+                        if(a.spoonacularScore < b.spoonacularScore) return -1;
+                        return 0;
+                    })
+                }else {
+                    sortedScore = state.allRecipesAux;
+                }
+                return{
+                    ...state,
+                    allRecipes:sortedScore
+                };
+
+        case FILTER_BY_DIETS: 
+            const filterDietas = state.allRecipesAux.filter(e =>{
+                let array = e.diets
+                let filterdiet;
+                for(let i=0; i < array.length;i++){
+                    filterdiet = array[i].name.toLowerCase() === action.payload.toLowerCase()
+                } 
+                return filterdiet;
+            })
+            
+            return {
+                ...state,
+                allRecipes: filterDietas !== undefined ? filterDietas:state.allRecipesAux
+            };
+            
         default:
             return state;
     }

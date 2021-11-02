@@ -62,7 +62,7 @@ function Navbar() {
             </li>
           </ul>
           <div>
-            { <Link to='/home'><Button buttonStyle='btn--outline' buttonSize='btn--large' onClick={onHandleClick}>clear Filter</Button> </Link>}
+            { <Link to='/home'><Button buttonStyle='btn--outline' buttonSize='btn--large' onClick={onHandleClick}>Clear Filter</Button> </Link>}
           </div>
         </div>
       </nav>

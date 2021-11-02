@@ -3,7 +3,7 @@ import {CardContainer,CardImage} from './CardElements';
 
 
 function Card(props) {
-    const {name,image,summary,spoonacularScore,healthScore,analyzedInstructions,diets} = props;
+    const {name,image,spoonacularScore,diets} = props;
     return (
         <CardContainer>
             <h3>{name}</h3>

@@ -1,43 +1,37 @@
 import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {getRecipeName} from '../../actions/index';
-import './SearchBar.modules.css';
+import {IoAdd} from 'react-icons/io5'
+import {ButtonS,Container, Input} from './SearchElements';
 
 
 function SearchBar() {
 
     const dispatch = useDispatch()
-    const [state, setSate] = useState({
-        name:'',
-    })
-    //console.log('SOY EL ESTADO',state.name)
-    //setState({[event.target.name]: event.target.value})
+    const [state, setSate] = useState('')
+    
     function onChangeInput(e){
         e.preventDefault();
-        setSate({
-            name:e.target.value
-        })
+        setSate(e.target.value)
     }
     function onSubmitInput(e){
         e.preventDefault();
-        dispatch(getRecipeName(state.name))
-        setSate('');
+        dispatch(getRecipeName(state))
+        setSate("");
     }
 
     return (
-        <div>
-            <form onSubmit={onSubmitInput}>
-                <div>
-                    <input
-                    type='text'
-                    autoComplete='off'
-                    value={state.name}
-                    onChange={onChangeInput}
-                    />
-                    <button type='submit'>Buscar</button>
-                </div>
-            </form>
-        </div>
+        <Container>
+            <Input
+            type='text'
+            autoComplete='off'
+            placeholder='Buscar una receta...'
+            value={state.name}
+            onChange={onChangeInput}
+            />
+            <ButtonS type='submit' onClick={onSubmitInput}><IoAdd/></ButtonS>
+            {/* <button  type='submit' onClick={onSubmitInput}><IoAdd/></button> */}
+        </Container>
     )
 }
 

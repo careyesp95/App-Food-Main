@@ -11,7 +11,7 @@
     background-color: transparent;
     color: rgb(255, 255, 255);
     padding: 8px 20px;
-    border: 1px solid #e0c2c0;
+    border: 1px solid #ffffff;
     transition: all 0.3s ease-out;
   }
   
@@ -21,15 +21,15 @@
   }
   
   .btn--large {
-    padding: 14px 28px;
-    font-size: 20px;
+    padding: 8px 10px;
+    font-size: 15px;
   }
   
   .btn--large:hover,
   .btn--medium:hover {
     transition: all 0.3s ease-out;
-    background: rgba(246, 211, 8, 0.144);
-    color: #ebe8e8;
+    background: rgba(179, 152, 34, 0.198);
+    color: #ffffff;
     transition: 250ms;
   }
   
