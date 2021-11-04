@@ -3,7 +3,6 @@ import {useDispatch,useSelector} from 'react-redux';
 import Navbar from '../../components/Navbar/Navbar.js'
 import Card from '../../components/Card/Card';
 import Paginado from '../../components/Paginado/Paginado.jsx';
-import Loading from '../../components/Loading/Loading';
 import {
     filterByOrder,
     filterByCreate,

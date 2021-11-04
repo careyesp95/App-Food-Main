@@ -1,36 +1,36 @@
-import React, {useState} from 'react'
-import {useDispatch} from 'react-redux'
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 import {getRecipeName} from '../../actions/index';
-import {IoAdd} from 'react-icons/io5'
+import {IoAdd} from 'react-icons/io5';
 import {ButtonS,Container, Input} from './SearchElements';
 
 
 function SearchBar() {
 
     const dispatch = useDispatch()
-    const [state, setSate] = useState('')
+    const [state, setState] = useState("")
     
     function onChangeInput(e){
         e.preventDefault();
-        setSate(e.target.value)
+        setState(e.target.value)
+        
     }
     function onSubmitInput(e){
         e.preventDefault();
         dispatch(getRecipeName(state))
-        setSate("");
+        setState("");
     }
 
     return (
         <Container>
             <Input
             type='text'
-            autoComplete='off'
             placeholder='Buscar una receta...'
-            value={state.name}
-            onChange={onChangeInput}
+            value={state}
+            onChange={(e) =>onChangeInput(e)}
             />
-            <ButtonS type='submit' onClick={onSubmitInput}><IoAdd/></ButtonS>
-            {/* <button  type='submit' onClick={onSubmitInput}><IoAdd/></button> */}
+            <ButtonS type='submit' onClick={(e)=>onSubmitInput(e)}><IoAdd/></ButtonS>
         </Container>
     )
 }

@@ -2,16 +2,19 @@ import {
     GET_RECIPE_ALL,
     GET_DIETS_ALL,
     GET_RECIPE_NAME,
+    GET_RECIPE_DETAIL,
     FILTER_BY_ORDER,
     FILTER_BY_CREATE,
     FILTER_BY_SCORE,
     FILTER_BY_DIETS,
+    CREATE_RECIPE,
 } from '../actions/actionName';
 
 const initialState = {
     allRecipes :[],
     allRecipesAux:[],
     allDiets:undefined,
+    getReceipeId:undefined,
 }
 
 function reducer(state=initialState,action) {
@@ -23,6 +26,11 @@ function reducer(state=initialState,action) {
                 allRecipesAux:action.payload,
                 
             };
+        case GET_RECIPE_DETAIL:
+            return {
+                ...state,
+                getReceipeId:action.payload,
+            }
 
         case GET_DIETS_ALL:
             return {
@@ -42,6 +50,10 @@ function reducer(state=initialState,action) {
                 ...state,
                 allRecipes:valuedata,
             };
+        case CREATE_RECIPE:
+            return {
+                ...state,
+            }
         case FILTER_BY_ORDER:
 
             let sortedOrder = action.payload === 'asc' ?
@@ -84,20 +96,20 @@ function reducer(state=initialState,action) {
             case FILTER_BY_SCORE:
                 let sortedScore;
                 if(action.payload === 'mayor'){
-                    sortedScore = state.allRecipesAux.sort((a,b) =>{
+                    sortedScore = state.allRecipes.sort((a,b) =>{
                         if(a.spoonacularScore > b.spoonacularScore) return -1;
                         if(a.spoonacularScore < b.spoonacularScore) return 1;
                         return 0;
                     })
                 }else if(action.payload === 'menor') {
                     
-                    sortedScore = state.allRecipesAux.sort((a,b) =>{
+                    sortedScore = state.allRecipes.sort((a,b) =>{
                         if(a.spoonacularScore > b.spoonacularScore) return 1;
                         if(a.spoonacularScore < b.spoonacularScore) return -1;
                         return 0;
                     })
                 }else {
-                    sortedScore = state.allRecipesAux;
+                    sortedScore = state.allRecipes;
                 }
                 return{
                     ...state,
