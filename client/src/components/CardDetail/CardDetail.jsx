@@ -4,9 +4,6 @@ import {CardContainer,CardImage} from './CardDetailElements';
 
 function CardDetail(props) {
     const {name,image,spoonacularScore,diets} = props;
-    function onHandleClick(){
-
-    }
     return (
         <CardContainer>
             <h3>{name}</h3>

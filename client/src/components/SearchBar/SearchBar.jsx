@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {getRecipeName} from '../../actions/index';
 import {IoAdd} from 'react-icons/io5';
@@ -18,6 +17,7 @@ function SearchBar() {
     }
     function onSubmitInput(e){
         e.preventDefault();
+        if(!state) return alert('Debes digitar una receta valida')
         dispatch(getRecipeName(state))
         setState("");
     }

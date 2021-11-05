@@ -1,9 +1,22 @@
 import React, {useState,useEffect} from 'react';
+import {FontAwesome} from '@fortawesome/react-fontawesome';
+
 import {useDispatch,useSelector} from 'react-redux';
 import {getDietsAll,createRecipe} from '../../actions/index';
 import {Link,useHistory} from 'react-router-dom';
 
 function CardCreate() {
+    // funcion validadora:::
+    function validate(state){
+        let errors = {};
+        if(!state.name){
+            errors.name = 'name is required';
+        }else if(!/^\w{2,30}$/.test(state.name)){
+            errors.name = 'El nombre es invalido'
+        }
+        return errors;
+    }
+
     // let {name, image, diets, summary, spoonacularScore, healthScore,
     //     analyzedInstructions} = req.body;
 
@@ -11,6 +24,7 @@ function CardCreate() {
     const history = useHistory();
     const dietas = useSelector(state => state.allDiets)
     
+    const [errors,setErrors] = useState({})
     const [state, setState] = useState({
         name:'',
         summary:'',
@@ -20,7 +34,7 @@ function CardCreate() {
         image:'',
         diets:[],
     })
-    console.log('estoy tratando de renderizar las dietas en el create', state.diets)
+    
     useEffect(()=> {
         dispatch(getDietsAll())
     },[dispatch])
@@ -31,6 +45,10 @@ function CardCreate() {
             ...state,
             [e.target.name]:e.target.value,
         })
+        setErrors(validate({
+            ...state,
+            [e.target.name]:e.target.value,
+        }));
     }
 
     function onHandleSelect(e){
@@ -39,6 +57,14 @@ function CardCreate() {
             ...state,
             diets:[...state.diets,e.target.value]
         })
+    }
+
+    function onHandleDelete(el){
+        setState({
+            ...state,
+            diets:state.diets.filter(elem => elem !== el)
+        })
+
     }
 
     function onHandleSubmit(e){
@@ -63,54 +89,65 @@ function CardCreate() {
             <h1>Crea una nueva Receta!</h1>
             <form onSubmit={onHandleSubmit}>
                 <div>
-                    <label>Nombre*:</label>
+                    <label htmlFor='nombre'>Nombre*:</label>
                     <input
                     type='text'
+                    id='nombre'
                     value={state.name}
                     name='name'
                     onChange={onHandleChange}
                     />
+                    {
+                        errors.name && (
+                            <p className='error'>{errors.name}</p>
+                        )
+                    }
                 </div>
                 <div>
-                    <label>Resumen de la Receta*:</label>
+                    <label htmlFor='summary'>Resumen de la Receta*:</label>
                     <input
                     type='text'
+                    id='summary'
                     value={state.summary}
                     name='summary'
                     onChange={onHandleChange}
                     />
                 </div>
                 <div>
-                    <label>Puntuación*:</label>
+                    <label htmlFor='score'>Puntuación*:</label>
                     <input
                     type='number'
+                    id='score'
                     value={state.spoonacularScore}
                     name='spoonacularScore'
                     onChange={onHandleChange}
                     />
                 </div>
                 <div>
-                    <label>Nivel de Comida Saludable*:</label>
+                    <label htmlFor='healthScore'>Nivel de Comida Saludable*:</label>
                     <input
                     type='number'
+                    id='healthScore'
                     value={state.healthScore}
                     name='healthScore'
                     onChange={onHandleChange}
                     />
                 </div>
                 <div>
-                    <label>Instrucciónes*:</label>
+                    <label htmlFor='insctructions'>Instrucciónes*:</label>
                     <input
                     type='text'
+                    id='insctructions'
                     value={state.analyzedInstructions}
                     name='analyzedInstructions'
                     onChange={onHandleChange}
                     />
                 </div>
                 <div>
-                    <label>Imagen:</label>
+                    <label htmlFor='image'>Imagen:</label>
                     <input
                     type='text'
+                    id='image'
                     value={state.image}
                     name='image'
                     onChange={onHandleChange}
@@ -119,19 +156,26 @@ function CardCreate() {
                 <label>Diets Type</label>
                 <select
                 onChange={onHandleSelect}>
-                <option value=''>Select Diets</option>
                     {
                         dietas && dietas.map(e => (
                             <option key={e.id} value={e.name}>{e.name}</option>
                         ))
                     }
                 </select>
-                <ul>
-                    <li>{state.diets.map(e => e + ",")}</li>
-                </ul>
                 
                 <button type='submit'>Create Recipe</button>
             </form>
+                <ul>
+                    <li>{
+                            state.diets.map(el =>
+                                <div key={el}>
+                                    <p>{el} <button onClick={()=> onHandleDelete(el)}>x</button></p>
+                                    
+                                </div>
+                            )
+                        }
+                    </li>
+                </ul>
         </div>
     )
 }
