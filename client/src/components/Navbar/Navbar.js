@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import {useDispatch} from 'react-redux';
 import { Button } from '../Button/ButtonElements';
 import { Link } from 'react-router-dom';
-import './Navbar.modules.css';
+import './Navbar.css';
 import SearchBar from '../SearchBar/SearchBar'; 
 import {getRecipeAll} from '../../actions/index';
 

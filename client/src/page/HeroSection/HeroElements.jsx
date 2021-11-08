@@ -36,7 +36,7 @@ export const HeroBg = styled.div`
 `
 
 export const VideoBg = styled.video`
-     object-fit: cover;
+    object-fit: cover;
     width: 100%;
     height: 100%;
     position: fixed;

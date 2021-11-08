@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import Loading from '../../components/Loading/Loading';
 import CardDetail from '../../components/CardDetail/CardDetail';
 import {getRecipeDetail} from '../../actions/index';
+import './RecipeDetail.css';
 
 
 function RecipeDetail() {
@@ -15,7 +16,7 @@ function RecipeDetail() {
     },[dispatch,id])
 
     return (
-        <div>
+        <div className='container'>
             {
                 recipeDetailById === undefined ?(
                     <Loading /> 
@@ -24,6 +25,9 @@ function RecipeDetail() {
                     name={recipeDetailById.name}
                     image={recipeDetailById.image}
                     spoonacularScore={recipeDetailById.spoonacularScore}
+                    summary={recipeDetailById.summary}
+                    healthScore={recipeDetailById.healthScore}
+                    analyzedInstructions={recipeDetailById.analyzedInstructions}
                     diets={recipeDetailById.diets}  
                     />
                 )

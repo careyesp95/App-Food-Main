@@ -1,11 +1,12 @@
 import React from 'react';
 import CardCreate from '../../components/CardCreate/CardCreate';
+import {ContainerRecipe} from './RecipeCreateElements';
 
 function RecipeCreate() {
     return (
-        <div>
+        <ContainerRecipe>
             <CardCreate />
-        </div>
+        </ContainerRecipe>
     )
 }
 

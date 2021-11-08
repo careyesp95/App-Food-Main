@@ -1,21 +1,62 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {CardContainer,CardImage} from './CardDetailElements';
+import {
+    CardImage,
+    ButtonR,
+    Image,
+    H3,
+    Title,
+    Dietas,
+    TitleSummary,
+    TitleScore,
+    TitleInstruction,
+} from './CardDetailElements';
+import './CardDetail.css';
 
-function CardDetail(props) {
-    const {name,image,spoonacularScore,diets} = props;
+
+function CardDetail({name,image,spoonacularScore,diets,summary,healthScore,analyzedInstructions}) {
+    summary = summary.slice(0,500)
+    let patron = '<b>';
+    let patron1 = '</b>';
+    summary = summary.replaceAll(patron,' ');
+    summary = summary.replaceAll(patron1,' ')
+
+    if(Array.isArray(analyzedInstructions)){
+        let array = analyzedInstructions.flat(2)
+        for(let i =0;i<array.length;i++){
+            analyzedInstructions = array[i].step
+        }
+
+    }else {
+        analyzedInstructions =  analyzedInstructions
+    }
+    
     return (
-        <CardContainer>
-            <h3>{name}</h3>
-            <CardImage>
-                <img src={image} alt='Cargando...'  />
-            </CardImage>
-            <h5>{spoonacularScore}</h5>
-            <h5>{diets?.map((e,i) => <p key={i}>{e.name}</p>)}</h5>
+        <div className ='wrap'>       
             <Link to='/home'>
-                <button>Regresar</button>
-            </Link>       
-        </CardContainer>
+                <ButtonR>Regresar</ButtonR>
+            </Link>
+            <div className='trajetaWrap'>
+                <div className ='tarjeta'>
+                    <div className ='adelante'>
+                        <H3>{name}</H3>
+                        <CardImage>
+                            <Image src={image} alt='Cargando...'  />
+                        </CardImage>
+                        <Title>Score:{spoonacularScore}</Title>
+                        <Dietas>Diets: {diets?.map((e,i) => <p key={i}>{e.name}</p>)}</Dietas>
+                    </div>
+                    <div className='atras'>
+                        <TitleSummary>Summary:{summary}</TitleSummary>
+                        <TitleInstruction>analyzedInstructions:
+                            { analyzedInstructions  }
+                        </TitleInstruction>
+                        <TitleScore>healthScore:{healthScore}</TitleScore>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }
 

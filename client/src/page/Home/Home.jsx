@@ -10,6 +10,8 @@ import {
     filterByDiets,
     getDietsAll,
     }from '../../actions/index';
+import './Home.css';
+
 
 function Home() {
     const stateRecipe = useSelector(state => state.allRecipes);
@@ -45,7 +47,7 @@ function Home() {
         setCurrentPage(1)
         setOrden('Ordenado'+ e.target.value)
     } 
-   // name,image,summary,spoonacularScore,healthScore,analyzedInstructions,diets
+
    function handleScoreOrder(e){
         e.preventDefault();
         dispatch(filterByScore(e.target.value))
@@ -58,38 +60,26 @@ function Home() {
         dispatch(filterByDiets(e.target.value))
    }
     return (
-        <div>
+        <div className='containerHome'>
             <Navbar />
             <br/>
-            
-            <div>
-                <select onChange={e => handleFilterOrder(e)} >
-                        <option value='asc'>Order A-Z</option>
-                        <option value='desc'>Order Z-A</option>
+            <div className='containerFilter'>
+                <select className='containerOption' onChange={e => handleFilterOrder(e)} >
+                        <option  value='asc'>Order A-Z</option>
+                        <option  value='desc'>Order Z-A</option>
                 </select>
-                <select onChange={e => handleScoreOrder(e)}>
+                <select className='containerOption' onChange={e => handleScoreOrder(e)}>
                         <option value='mayor'>Higher Score</option>
                         <option value='menor'>Lower Score</option>
                 </select>
-                <select onChange={e => handleFilterDiets(e)}>
+                <select className='containerOption' onChange={e => handleFilterDiets(e)}>
                     {
                         stateDiets?.map(elem => (
                             <option key={elem.id}value={elem.name} >{elem.name}</option>
                         ))
                     }
-                    {/* {
-                        stateDiets !== undefined ? 
-                        (
-                            stateDiets.map(e => {
-                                return <option key={e.id} value={e.name}>{e.name}</option>       
-                            })   
-
-                        ):(
-                            <Loading />
-                        )
-                    } */}
                 </select>
-                <select onChange={handleFilterCreate}>
+                <select className='containerOption' onChange={handleFilterCreate}>
                         <option value='creado'>Data Base</option>
                         <option value='api'>API</option>
                         <option value='all'>All</option>
@@ -102,21 +92,23 @@ function Home() {
             />
             <br/>
             <br/>
-            {
-                  currentRecipes && currentRecipes.map(elem => {
-                    return <Card
-                    key={elem.id}
-                    id={elem.id}
-                    name={elem.name}
-                    image={elem.image}
-                    //summary={elem.summary}
-                    spoonacularScore={elem.spoonacularScore}
-                    //healthScore={elem.healthScore}
-                    //analyzedInstructions={elem.analyzedInstructions}
-                    diets={elem.diets}
-                    />
-                })
-            }
+            <div className='containerCard'>
+                {
+                    currentRecipes && currentRecipes.map(elem => {
+                        return <Card
+                        key={elem.id}
+                        id={elem.id}
+                        name={elem.name}
+                        image={elem.image}
+                        //summary={elem.summary}
+                        spoonacularScore={elem.spoonacularScore}
+                        //healthScore={elem.healthScore}
+                        //analyzedInstructions={elem.analyzedInstructions}
+                        diets={elem.diets}
+                        />
+                    })
+                }
+            </div>
         </div>
     )
 }
