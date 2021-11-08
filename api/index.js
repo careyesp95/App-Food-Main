@@ -22,7 +22,7 @@ const { conn, Diet } = require('./src/db.js');
 
 
 // En una primera instancia, cuando no exista ninguno, deberán precargar la base de datos con los tipos de datos indicados por spoonacular acá
-let dietas = ['Gluten Free','Dairy Free','Ketogenic','Vegetarian','Lacto-Vegetarian','Ovo-Vegetarian','Vegan','Pescetarian','Paleo','Primal','Low FODMAP','Whole30']
+let dietas = ['Gluten Free','Dairy Free','Lacto Ovo Vegetarian','Vegan','Pescatarian','Primal','Whole 30','Fodmap Friendly']
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {

@@ -20,7 +20,7 @@ app.get('/types', (_req,res, next) => {
 app.post('/typeCreate', async (req,res, next) => {
     try{
         const {name} = req.body;
-        let dietaCreate = await Diet.findOrCreate({where:{name:name}})
+        let dietaCreate = await Diet.findOrCreate({where:{name}})
         res.json(dietaCreate)
         
     }catch(err){
