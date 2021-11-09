@@ -20,6 +20,9 @@ import {
     Main,
     ButtonR,
     H1,
+    Select,
+    ButtonDietas,
+    Li,
 } from './CardCreateElements';
 
 function CardCreate() {
@@ -234,24 +237,24 @@ function CardCreate() {
                         }
                     </div>
                     <Label valido={errors.diets}>Diets Type Selected:</Label>
-                    <select
+                    <Select
                     onChange={onHandleSelect}>
                         {
                             dietas && dietas.map(e => (
                                 <option key={e.id} value={e.name}>{e.name}</option>
                             ))
                         }
-                    </select>
+                    </Select>
                         <ul>
-                            <li>{
+                            <Li>{
                                     state.diets.map(el =>
                                         <div key={el}>
-                                            <p>{el} <button onClick={()=> onHandleDelete(el)}>x</button></p>
+                                            <p>{el} <ButtonDietas onClick={()=> onHandleDelete(el)}>x</ButtonDietas></p>
                                             
                                         </div>
                                     )
                                 }
-                            </li>
+                            </Li>
                         </ul>
                     {formularioValido === false && <MenssageError>
                         <p><FontAwesomeIcon icon={faExclamationTriangle}/><b>Error:</b><b>Por favor complete los campos marcados con * correctamente.</b></p>

@@ -20,10 +20,11 @@
     top:20px;
     margin-left: 100px;
     margin-right: 200px;
-    background:#f3f1ed4d;
+    background:#8200001a;
     position: relative;
     transform-style: preserve-3d;
     transition: .7s ease;
+    border-radius: 10px;
     -webkit-box-shadow:0px 10px 15px -5px rgba(0,0,0,0.65);
     -moz-box-shadow:0px 10px 15px -5px rgba(0,0,0,0.65);
     box-shadow:0px 10px 15px -5px rgba(0,0,0,0.65);
@@ -40,7 +41,6 @@
 .atras{
     transform:rotateY(180deg);
     align-items: center;
-
     margin-top: 2rem;
     padding: 10px;    
 }

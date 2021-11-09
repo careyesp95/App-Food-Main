@@ -6,12 +6,12 @@ export const CardRecipe = styled.div`
     margin:50px;
     align-items:center;
     backdrop-filter:blur(2px);
-    background-color:#fff2f240;
+    background-color:#82000023;
     overflow:hidden;
     border-radius:20px;
     :hover{
         transform:translateY(-10px);
-        box-shadow:0 12px 16px rgba(0,0,0,0.2)
+        box-shadow:0 12px 16px #820000ad;
     }
 `
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ButtonR = styled.button` 
-    border:solid 2px #ffffff;
+    border:solid 2px #820000;
     border-radius:10px;
     outline: none;
     width:5rem;
@@ -12,11 +12,11 @@ export const ButtonR = styled.button`
     align-items:center;
     background-color:transparent;
     transition:background-color 0.25s;
-    box-shadow: 2px 3px 60px #f80b0bba;
+    box-shadow: 2px 3px 60px #82000096;
     cursor:pointer;
-    color:#000000;
+    color:#820000;
     :hover{
-        background-color:#facac786;
+        background-color:#82000026;
     }
 `
 

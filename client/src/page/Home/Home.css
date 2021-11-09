@@ -1,8 +1,13 @@
 .containerHome {
-    background-image: url("../../assets/fondo1.jpg");
+    background-image: url("../../assets/fondo.jpg");
     background-repeat: no-repeat;
+    background-position: center center;
+    height:2800px;
+    background-attachment: fixed;
     background-size:cover;
+    
 }
+
 .containerCard{
     display: flex;
     flex-wrap: wrap;
@@ -14,13 +19,14 @@
     justify-content: center;
     background:transparent;
     margin-left: 1rem;
+    text-decoration: none;
     
 }
 
 .containerOption{
     display: flex;
     align-items: center;
-    color: rgb(8, 8, 8);
+    color:#820000;
     background:transparent;
     border:none;
     width:7rem;
@@ -28,7 +34,8 @@
     font-size:1rem;
     border-radius: 10px;
     cursor: pointer;
-    box-shadow:1px 0px 10px rgba(255, 255, 255, 0.993);
+    box-shadow:1px 0px 10px #820000;
+    text-decoration: none;
     
 
 

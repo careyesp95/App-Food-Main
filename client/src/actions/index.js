@@ -22,6 +22,9 @@ export const getRecipeAll = function(){
                 payload:response,
             })
         })
+        .catch(err => {
+            if(err.response?.status !== 404) alert('Cargando las recetas...')
+        })
     }
 }
 

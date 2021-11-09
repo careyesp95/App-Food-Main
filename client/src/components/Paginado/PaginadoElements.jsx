@@ -16,12 +16,12 @@ export const ContainerBTN = styled.button`
     display:flex;
     justify-content:center;
     align-items:center;
-    background-color:#e7e5e573;
+    background-color:#e7e1e11f;
     transition:background-color 0.5s;
     cursor:pointer;
-    color:#cac8c8;
-    box-shadow: 1px 1px 10px #b9b6b6dc;
+    color:#820000;
+    box-shadow: 1px 1px 10px #820000;
     :hover{
-        background-color:#f8eeeef0;
+        background-color:#ffffff;
     }
 `

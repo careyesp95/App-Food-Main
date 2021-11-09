@@ -12,9 +12,9 @@ export const ButtonS = styled.button`
     background-color:transparent;
     transition:background-color 0.25s;
     cursor:pointer;
-    color:#ffffff;
+    color:#5f0101;
     :hover{
-        background-color:#ffffff4c;
+        background-color:#82000084;
     }
 `
 
@@ -27,7 +27,7 @@ export const Container = styled.div`
 export const Input = styled.input`
     background-color:transparent;
     border:none;
-    color:#fff;
+    color:#820000;
     font-size:1.5rem;
     font-weight:1.5rem;
     width:20rem;
@@ -35,6 +35,6 @@ export const Input = styled.input`
         outline:none;
     }
     ::placeholder{
-        color:#ffffffac;
+        color:#820000;
     }
 `

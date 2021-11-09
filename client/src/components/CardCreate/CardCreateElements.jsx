@@ -14,7 +14,7 @@ export const colores = {
     borde:'#0075ff',
     error:'#bb2929',
     exito:'#1ed12d',
-    defecto:'rgba(163,163,163,0.4)'
+    defecto:'#82000088'
 }
 
 export const Formulario = styled.form`
@@ -31,7 +31,7 @@ export const Formulario = styled.form`
 
 export const Label = styled.label`
     display:block;
-    color:#fff8f8;
+    color:#820000;
     font-weight:700;
     padding:10px;
     min-height:40px;
@@ -48,7 +48,7 @@ export const InputContainer = styled.div`
 
 export const Input = styled.input`
     width:90%;
-    background:#fff;
+    background:#82000032;
     border-radius:3px;
     height:25px;
     line-height:45px;
@@ -59,7 +59,7 @@ export const Input = styled.input`
     &:focus{
         border:3px solid ${colores.borde};
         outline:none;
-        box-shadow:3px 0px 30px rgba(163,163,163,0.4)
+        box-shadow:3px 0px 30px #03030366
     }
     ${props => props.valido === undefined && css`
         border: 3px solid ${colores.defecto};
@@ -70,8 +70,8 @@ export const Input = styled.input`
     `}
 `
 export const StylError = styled.p`
-    font-size:1px;
-    margin-bottom: 0;
+    font-size:1rem;
+    margin-bottom:0;
     margin-top:0;
     color:${colores.error};
     display:none;
@@ -110,15 +110,15 @@ export const Boton = styled.button`
     height:45px;
     line-height:45px;
     width:30%;
-    background:#000;
-    color:#fff;
+    background:#82000039;
+    color:#820000;
     font-weight:bold;
     border:none;
     border-radius:3px;
     cursor:pointer;
     transition:.1s ease all;
     &:hover{
-        box-shadow:3px 0px 30px #e2e0e0e1
+        box-shadow:3px 0px 30px #820000b5;
     }
 `
 
@@ -138,7 +138,7 @@ export const MenssageError = styled.div`
 `
 
 export const ButtonR = styled.button` 
-    border:solid 2px #ffffff;
+    border:solid 2px #820000;
     border-radius:10px;
     outline: none;
     width:5rem;
@@ -151,7 +151,7 @@ export const ButtonR = styled.button`
     transition:background-color 0.25s;
     box-shadow: 2px 3px 60px #f80b0bba;
     cursor:pointer;
-    color:#fff;
+    color:#820000;
     :hover{
         background-color:#facac786;
     }
@@ -160,6 +160,32 @@ export const ButtonR = styled.button`
 export const H1 = styled.h1`
     display:flex;
     justify-content:center;
-    color:#fff;
+    color:#820000;
     margin-top:0;
+`
+export const Select = styled.select`
+    background:#82000037;
+    border:none;
+    text-decoration:none;
+`
+export const ButtonDietas = styled.button`
+    border:solid 2px transparent;
+    border-radius:9999px;
+    width:2rem;
+    height:2rem;
+    font-size:1rem;
+    align-items:center;
+    background-color:#8200003e;
+    transition:background-color 0.25s;
+    cursor:pointer;
+    color:#5f0101;
+    :hover{
+        background-color:#82000084;
+    }
+
+`
+
+export const Li = styled.li`
+    text-decoration:none;
+    border:none;
 `
