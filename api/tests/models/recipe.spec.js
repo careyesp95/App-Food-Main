@@ -1,11 +1,23 @@
 const { Recipe, conn } = require('../../src/db.js');
-const { expect } = require('chai');
+const chai = require('chai');
+//const { expect } = require('chai');
+const chaiAsPromised = require('chai-as-promised')
+
+chai.use(chaiAsPromised);
 
 describe('Recipe model', () => {
-  before(() => conn.authenticate()
+  /*before(() => conn.authenticate()
     .catch((err) => {
       console.error('Unable to connect to the database:', err);
-    }));
+    }));*/
+    before( async () => {
+      try{
+        await conn.authenticate()
+      }catch(err) {
+        console.error('Unable to connect to the database:', err)
+      }
+
+    })
   describe('Validators', () => {
     beforeEach(() => Recipe.sync({ force: true }));
     describe('name', () => {
