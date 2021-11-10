@@ -80,9 +80,9 @@ function Home() {
                     }
                 </select>
                 <select className='containerOption' onChange={handleFilterCreate}>
+                        <option value='all'>All</option>
                         <option value='creado'>Data Base</option>
                         <option value='api'>API</option>
-                        <option value='all'>All</option>
                 </select>
             </div> 
             <Paginado 

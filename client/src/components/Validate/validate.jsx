@@ -5,7 +5,7 @@ export function validate(state){
     if(!state.name){
         errors.name = 'name is required';
     }else if(!/^\w+\s?\w+?\s?\w+?\s?\w+?\s?$/.test(state.name)){
-        errors.name = 'Debe contener más de 2 caracteres y como maximo 3 espacios en la receta'
+        errors.name = 'Debe contener más de 3 caracteres y como maximo 3 espacios en la receta'
     }else if(!state.summary){
         errors.summary = 'summary is required'
     }else if(!/^\w{2,5}\s?\w+?\s?\w+?\s?\w+?\s?\w+?\s?\w+?\s?\w+?\s?\w+?\s?\w+?\s?\w+?\s?.?$/.test(state.summary)){

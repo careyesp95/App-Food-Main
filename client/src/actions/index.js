@@ -73,6 +73,9 @@ export const getRecipeDetail = function(id){
                 payload:response
             })
         })
+        .catch(err => {
+            if(err.response?.status !== 404) alert('Cargando')
+        })
     }
 }
 
