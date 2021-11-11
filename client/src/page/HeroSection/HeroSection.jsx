@@ -15,7 +15,7 @@ function HeroSection() {
             <HeroContent>
                 <HeroBtnWrapper>
                     <HeroH1>
-                        Welcome
+                        Welcome!
                     </HeroH1>
                 </HeroBtnWrapper>
                     <Link to='/home'>
@@ -23,7 +23,7 @@ function HeroSection() {
                         buttonStyle='btn--outline'
                         buttonSize='btn--large' 
                         >
-                            Start
+                            Ingresar
                         </Button>
                     </Link>
             </HeroContent>

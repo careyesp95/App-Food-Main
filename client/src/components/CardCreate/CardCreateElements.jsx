@@ -11,7 +11,7 @@ export const Main = styled.div`
 `
 
 export const colores = {
-    borde:'#0075ff',
+    borde:'#04ff19',
     error:'#bb2929',
     exito:'#1ed12d',
     defecto:'#82000088'

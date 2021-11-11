@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {getRecipeName} from '../../actions/index';
-import {IoAdd} from 'react-icons/io5';
 import {ButtonS,Container, Input} from './SearchElements';
 
 
@@ -30,7 +29,7 @@ function SearchBar() {
             value={state}
             onChange={(e) =>onChangeInput(e)}
             />
-            <ButtonS type='submit' onClick={(e)=>onSubmitInput(e)}><IoAdd/></ButtonS>
+            <ButtonS type='submit' onClick={(e)=>onSubmitInput(e)}>Buscar</ButtonS>
         </Container>
     )
 }

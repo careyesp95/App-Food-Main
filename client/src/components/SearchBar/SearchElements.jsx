@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const ButtonS = styled.button`
     border:solid 2px transparent;
-    border-radius:9999px;
-    width:2rem;
+    border-radius:10px;
+    width:4rem;
     height:2rem;
     font-size:1rem;
     display:flex;

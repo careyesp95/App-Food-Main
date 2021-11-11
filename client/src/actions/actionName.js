@@ -7,6 +7,7 @@ const FILTER_BY_CREATE = 'FILTER_BY_CREATE';
 const FILTER_BY_SCORE = 'FILTER_BY_SCORE';
 const FILTER_BY_DIETS = 'FILTER_BY_DIETS';
 const CREATE_RECIPE = 'CREATE_RECIPE';
+const CLEAR_ALL = 'CLEAR_ALL';
 
 module.exports = {
     GET_RECIPE_ALL,
@@ -18,4 +19,5 @@ module.exports = {
     FILTER_BY_SCORE,
     FILTER_BY_DIETS,
     CREATE_RECIPE,
+    CLEAR_ALL,
 }

@@ -1,6 +1,5 @@
 import React, { useState} from 'react';
 import {useDispatch} from 'react-redux';
-import { Button } from '../Button/ButtonElements';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import SearchBar from '../SearchBar/SearchBar'; 
@@ -16,6 +15,7 @@ function Navbar() {
   function onHandleClick(e) {
     e.preventDefault();
     dispatch(getRecipeAll());
+    
   }
 
   return (
@@ -23,9 +23,9 @@ function Navbar() {
     <>
       <nav className='navbar'>
         <div className='navbar_container'>
-          <Link to='/home' className='navbar_logo' onClick={closeMobileMenu}>
+          <Link to='/' className='navbar_logo' onClick={closeMobileMenu}>
             <div className='navbar_icon'>
-            <i className="fas fa-utensils"></i>
+            <i class="fas fa-arrow-left"></i>
             </div>
           </Link>
           <div className='menu_icon' onClick={handleClick}>
@@ -36,19 +36,12 @@ function Navbar() {
               <SearchBar />
             </div>
             <li className='nav_item'>
-              <Link to='/' className='nav_links' onClick={closeMobileMenu}>
-                Start
-                <div className="navbar_home">
-                </div>
-              </Link>
-            </li>
-            <li className='nav_item'>
               <Link
                 to='/home/create'
                 className='nav_links'
                 onClick={closeMobileMenu}
               >
-                Create
+                Create Recipe
               </Link>
             </li>
             <li>
@@ -61,9 +54,6 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-          <div>
-            { <Link to='/home'><Button buttonStyle='btn--outline' buttonSize='btn--large' onClick={onHandleClick}>Clear Filter</Button> </Link>}
-          </div>
         </div>
       </nav>
     </>

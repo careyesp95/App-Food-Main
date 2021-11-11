@@ -62,6 +62,7 @@ function CardCreate() {
 
     function onHandleSelect(e){
         e.preventDefault();
+        state.diets.includes(e.target.value) ? alert(`Ya seleccionaste ${e.target.value}, por favor seleccione otro tipo de dieta`):
         setState({
             ...state,
             diets:[...state.diets,e.target.value]
@@ -114,10 +115,10 @@ function CardCreate() {
                                 onChange={onHandleChange}
                                 valido={errors.name}
                             />
-                            <ValidateIcon
+                            {/* <ValidateIcon
                             icon={errors.name === undefined ? faCheckCircle:faTimesCircle}
                             valido={errors.name}
-                            />
+                            /> */}
                         </InputContainer>
                         {
                             errors.name && (
@@ -137,9 +138,9 @@ function CardCreate() {
                             onChange={onHandleChange}
                             valido={errors.summary}
                             />
-                            <ValidateIcon 
+                            {/* <ValidateIcon 
                             icon={errors.summary === undefined ? faCheckCircle:faTimesCircle}
-                            valido={errors.summary}/>
+                            valido={errors.summary}/> */}
                         </InputContainer>
                         {
                             errors.summary && (
@@ -159,9 +160,9 @@ function CardCreate() {
                             onChange={onHandleChange}
                             valido={errors.spoonacularScore}
                             />
-                            <ValidateIcon 
+                            {/* <ValidateIcon 
                             icon={errors.spoonacularScore === undefined ? faCheckCircle:faTimesCircle}
-                            valido={errors.spoonacularScore}/>
+                            valido={errors.spoonacularScore}/> */}
                         </InputContainer>
                         {
                             errors.spoonacularScore && (
@@ -181,10 +182,10 @@ function CardCreate() {
                             onChange={onHandleChange}
                             valido={errors.healthScore}
                             />
-                            <ValidateIcon
+                            {/* <ValidateIcon
                             icon={errors.healthScore === undefined ? faCheckCircle:faTimesCircle}
                             valido={errors.healthScore}
-                            />
+                            /> */}
                         </InputContainer>
                         {
                             errors.healthScore && (
@@ -204,9 +205,9 @@ function CardCreate() {
                             onChange={onHandleChange}
                             valido={errors.analyzedInstructions}
                             />
-                            <ValidateIcon
+                            {/* <ValidateIcon
                             icon={errors.analyzedInstructions === undefined ? faCheckCircle:faTimesCircle}
-                            valido={errors.analyzedInstructions}/>
+                            valido={errors.analyzedInstructions}/> */}
                         </InputContainer>
                         {
                             errors.analyzedInstructions && (
@@ -226,9 +227,9 @@ function CardCreate() {
                             onChange={onHandleChange}
                             valido={errors.image}
                             />
-                            <ValidateIcon
+                            {/* <ValidateIcon
                             icon={errors.image === undefined ? faCheckCircle:faTimesCircle}
-                            valido={errors.image}/>
+                            valido={errors.image}/> */}
                         </InputContainer>
                         {
                             errors.image && (

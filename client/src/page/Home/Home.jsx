@@ -9,8 +9,11 @@ import {
     filterByScore,
     filterByDiets,
     getDietsAll,
+    getRecipeAll,
     }from '../../actions/index';
+import {ButtonClear} from './HomeElements'
 import './Home.css';
+
 
 
 function Home() {
@@ -19,9 +22,10 @@ function Home() {
 
     const dispatch = useDispatch();
 
-    
     const [orden,setOrden] = useState('');
     const [score,setScore] = useState('');
+    const [diets,setDiets] = useState('');
+    const [dataBase, setDataBase] = useState('');
     const [currentPage,setCurrentPage] = useState(1);
     const [recipe,setRecipe] = useState(9);
     const indexOfLastRecipe = currentPage * recipe;
@@ -40,50 +44,68 @@ function Home() {
     function handleFilterCreate(e){
         e.preventDefault();
         dispatch(filterByCreate(e.target.value))
+        setDataBase(e.target.value)
     }
 
     function handleFilterOrder(e){
         dispatch(filterByOrder(e.target.value))
         setCurrentPage(1)
-        setOrden('Ordenado'+ e.target.value)
+        setOrden( e.target.value)
+        
     } 
 
    function handleScoreOrder(e){
         e.preventDefault();
         dispatch(filterByScore(e.target.value))
-        setScore('Ordenado'+ e.target.value)
+        setScore(e.target.value)
         
    }
 
    function handleFilterDiets (e){
         e.preventDefault();
         dispatch(filterByDiets(e.target.value))
+        setDiets(e.target.value)
    }
+
+   function clearFilter (e){
+       e.preventDefault();
+       setOrden('selec')
+       setScore('selec')
+       setDiets('Vegan')
+       setDataBase('All')
+       dispatch(getRecipeAll());
+       
+   }
+
+
     return (
         <div className='containerHome'>
             <Navbar />
             <br/>
             <div className='containerFilter'>
-                <select className='containerOption' onChange={e => handleFilterOrder(e)} >
+                <select className='containerOption' name='orden' value={orden} onChange={e => handleFilterOrder(e)} >
+                        <option value='selec'>selec</option>
                         <option  value='asc'>Order A-Z</option>
                         <option  value='desc'>Order Z-A</option>
                 </select>
-                <select className='containerOption' onChange={e => handleScoreOrder(e)}>
+                <select className='containerOption' name='score' value={score} onChange={e => handleScoreOrder(e)}>
+                        <option value='selec'>selec</option>
                         <option value='mayor'>Higher Score</option>
                         <option value='menor'>Lower Score</option>
                 </select>
-                <select className='containerOption' onChange={e => handleFilterDiets(e)}>
+                <select className='containerOption' name='diets' value={diets} onChange={e => handleFilterDiets(e)}>
                     {
                         stateDiets?.map(elem => (
                             <option key={elem.id}value={elem.name} >{elem.name}</option>
                         ))
                     }
                 </select>
-                <select className='containerOption' onChange={handleFilterCreate}>
+                <select className='containerOption' name='dataBase' value={dataBase} onChange={handleFilterCreate}>
                         <option value='all'>All</option>
                         <option value='creado'>Data Base</option>
                         <option value='api'>API</option>
                 </select>
+                <ButtonClear onClick={clearFilter}>Clear</ButtonClear>
             </div> 
             <Paginado 
                 recipePerPage={recipe}

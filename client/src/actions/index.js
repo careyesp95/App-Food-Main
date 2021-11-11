@@ -8,6 +8,7 @@ import {
     FILTER_BY_SCORE,
     FILTER_BY_DIETS,
     CREATE_RECIPE,
+    CLEAR_ALL,
 
 } from './actionName.js';
 import axios from 'axios';
@@ -135,4 +136,11 @@ export const filterByDiets = function(status){
         type:FILTER_BY_DIETS,
         payload:status
     }
+}
+
+export const clearAll = function() {
+    return {
+        type:CLEAR_ALL,
+    }
+
 }

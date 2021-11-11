@@ -8,6 +8,7 @@ import {
     FILTER_BY_SCORE,
     FILTER_BY_DIETS,
     CREATE_RECIPE,
+    CLEAR_ALL,
 } from '../actions/actionName';
 
 const initialState = {
@@ -58,19 +59,19 @@ function reducer(state=initialState,action) {
 
             let sortedOrder = action.payload === 'asc' ?
             state.allRecipes.sort(function(a,b){
-                if(a.name > b.name){
+                if(a.name.toLowerCase() > b.name.toLowerCase()){
                     return 1;
                 }
-                if(b.name > a.name){
+                if(b.name.toLowerCase() > a.name.toLowerCase()){
                     return -1;
                 }
                 return 0;
             })
             : state.allRecipes.sort(function(a,b){
-                if(a.name > b.name){
+                if(a.name.toLowerCase() > b.name.toLowerCase()){
                     return -1;
                 }
-                if(b.name > a.name){
+                if(b.name.toLowerCase() > a.name.toLowerCase()){
                     return 1;
                 }
                 return 0;
@@ -117,19 +118,30 @@ function reducer(state=initialState,action) {
                 };
 
         case FILTER_BY_DIETS: 
-            const filterDietas = state.allRecipesAux.filter(e =>{
+            /*const filterDietas = state.allRecipesAux.filter(e =>{
                 let array = e.diets
                 let filterdiet;
                 for(let i=0; i < array.length;i++){
                     filterdiet = array[i].name.toLowerCase() === action.payload.toLowerCase()
                 } 
                 return filterdiet;
+            })*/
+
+            let filterDietas = state.allRecipesAux.filter(dieta => {
+                let array = dieta.diets
+                return array.some(e => e.name.toUpperCase() === action.payload.toUpperCase())
             })
             
             return {
                 ...state,
-                allRecipes: filterDietas !== undefined ? filterDietas:state.allRecipesAux
+                allRecipes:filterDietas ? filterDietas:state.allRecipesAux
+                //allRecipes: filterDietas !== undefined ? filterDietas:state.allRecipesAux
             };
+        case CLEAR_ALL:
+            return{
+                ...state,
+                allRecipes:[...state.allRecipesAux]
+            }
             
         default:
             return state;
